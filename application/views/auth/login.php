@@ -36,14 +36,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row justify=content-center">
-                        <div class="col-6 d-flex justify-content-center">
-                            <img src="<?= base_url('assets/img/pimnas.png') ?>" class="img-fluid p-4" style="width: 170px;">
-                        </div>
-                        <div class="col-6 d-flex justify-content-center">
-                            <img src="<?= base_url('assets/img/um.png') ?>" class="img-fluid p-4 " style="width: 170px;">
-                        </div>
-                    </div>
                 </div>
             </div>
 
