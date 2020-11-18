@@ -13,12 +13,24 @@ class Workout extends CI_Controller
   {
   	$data['title'] = 'Workout';
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['hehe'] = $this->db->get_where('workouts', ['user_id' => $this->session->userdata('id')])->result_array();
 
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar', $data);
-    $this->load->view('templates/topbar', $data);
-    $this->load->view('workout/index', $data);
-    $this->load->view('templates/footer');
-  }	
- 
+    $this->form_validation->set_rules('bb', 'Berat Badan', 'required');
+
+    if($this->form_validation->run() == false){
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('templates/topbar', $data);
+      $this->load->view('workout/index', $data);
+      $this->load->view('templates/footer');
+    }else{
+      $data = [
+        'user_id' => $this->session->userdata('id'),
+        'bb'      => $this->input->post('bb')
+      ];
+      $this->db->insert('workouts', $data);
+      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
+      redirect('workout');
+    }
+  }
 }
