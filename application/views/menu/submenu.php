@@ -35,7 +35,7 @@
                                   <td><?=$sm['title'];?></td>
                                   <td><?=$sm['menu'];?></td>
                                   <td><?=$sm['url'];?></td>
-                                  <td><?=$sm['icon'];?></td>
+                                  <td><?=$sm['conI'];?></td>
                                   <td><?=$sm['is_active'];?></td>
                                   <td>
                                       <a href="" class="badge badge-success">edit</a>
