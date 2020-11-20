@@ -38,7 +38,7 @@
                                   <td><?=$sm['conI'];?></td>
                                   <td><?=$sm['is_active'];?></td>
                                   <td>
-                                      <a href="" class="badge badge-success">edit</a>
+                                      <a href="" class="badge badge-success">edi</a>
                                       <a href="" class="badge badge-danger">delete</a>
                                   </td>
                                 </tr>
