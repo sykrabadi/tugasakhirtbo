@@ -26,7 +26,9 @@ class Workout extends CI_Controller
     }else{
       $data = [
         'user_id' => $this->session->userdata('id'),
-        'bb'      => $this->input->post('bb')
+        'bb'      => $this->input->post('bb'),
+        'tb'      => $this->input->post('tb'),
+        'tanggal' => time()
       ];
       $this->db->insert('workouts', $data);
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
