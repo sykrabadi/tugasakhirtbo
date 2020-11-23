@@ -42,6 +42,7 @@
 				          <span aria-hidden="true">&times;</span>
 				        </button>
 				      </div>
+
 				      <div class="modal-body">
 				        <form method="post" action="<?= base_url('workout'); ?>">
 				        	<input type="hidden" value="<?= $this->session->userdata('id'); ?>" readonly>
@@ -49,8 +50,8 @@
 						    <label for="formGroupExampleInput">Berat Badan Saat Ini</label>
 						    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Berat Badan" name="bb">
 						  </div>
-						
 				      </div>
+				      
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				        <button type="submit" class="btn btn-primary">Kirim</button>
