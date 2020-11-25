@@ -101,4 +101,43 @@ class Admin extends CI_Controller
 		$this->load->view('workout/members', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function getuserworkout()
+	{
+		$data['title'] = 'Users Workout Plan';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->model('Workouts_model','workouts');
+		$data['users_workouts'] = $this->workouts->getallworkouts();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('workout/users_workouts', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function setuserworkout($user_id)
+	{
+		$data['title'] = 'Users Workout Plan';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user_id'] = $user_id;
+
+		if($this->form_validation->run() == false){
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('workout/set_users_workouts', $data);
+			$this->load->view('templates/footer');
+		}else{
+			$data = [
+		        'user_id' 	   => $user_id,
+		        'angkat_beban' => $this->input->post('angkat_beban'),
+		        'lari'		   => $this->input->post('lari')
+	      	];
+	      $this->db->insert('workouts_admin', $data);
+	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
+	      redirect('workout');
+		}
+	}
 }

@@ -10,9 +10,7 @@
                                 <tr>
                                   <th scope="col">#</th>
                                   <th scope="col">Nama</th>
-                                  <th scope="col">Jenis Kelamin</th>
                                   <th scope="col">Email</th>
-                                  <th scope="col">Jenis Workout</th>
                                   <th scope="col">Action</th>
                                 </tr>
                               </thead>
