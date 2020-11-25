@@ -68,7 +68,6 @@
 						    <label for="formGroupExampleInput">Tinggi Badan Saat Ini</label>
 						    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Tinggi Badan" name="tb">
 						  </div>
-						  <input type="hidden" value="">
 
 				      </div>
 				      
