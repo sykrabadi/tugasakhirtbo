@@ -137,7 +137,7 @@ class Admin extends CI_Controller
 	      	];
 	      $this->db->insert('workouts_admin', $data);
 	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
-	      redirect('workout');
+	      redirect('admin/getuserworkout');
 		}
 	}
 }
