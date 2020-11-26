@@ -101,4 +101,51 @@ class Admin extends CI_Controller
 		$this->load->view('workout/members', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function getusersworkouts()
+	{
+		$data['title'] = 'Users Workout Plan';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->model('Workouts_model','workouts');
+		$data['users_workouts'] = $this->workouts->getallworkouts();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('workout/users_workouts', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function setuserworkout($user_id)
+	{
+		$data['title'] = 'Users Workout Plan';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user_id'] = $user_id;
+
+		$this->form_validation->set_rules('angkat_beban', 'Angkat Beban', 'required');
+		$this->form_validation->set_rules('lari', 'Lari', 'required');
+
+		if($this->form_validation->run() == false){
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('workout/set_users_workouts', $data);
+			$this->load->view('templates/footer');
+		}else{
+			$data = [
+		        'user_id' 	   => $user_id,
+		        'angkat_beban' => $this->input->post('angkat_beban'),
+		        'lari'		   => $this->input->post('lari')
+	      	];
+	      $this->db->insert('workouts_admin', $data);
+
+	      //update kondisi is_accepted menjadi accepted (1) pada tabel workouts
+	      $this->db->set('is_accepted', 1);
+	      $this->db->where('user_id', $user_id);
+	      $this->db->update('workouts');
+	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
+	      redirect('admin/getuserworkout');
+		}
+	}
 }

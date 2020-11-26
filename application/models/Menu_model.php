@@ -10,6 +10,7 @@ class Menu_model extends CI_Model
 				`user_sub_menu`.`menu_id` = `user_menu`.`id`";
 		return $this->db->query($query)->result_array();
 	}
+	
 	public function cekTerdaftar($id_user, $id_lomba)
 	{
 		$this->db->select('rt.id');
@@ -23,24 +24,5 @@ class Menu_model extends CI_Model
 		} else {
 			return true;
 		}
-	}
-
-	public function getTeamByLomba($id_lomba)
-	{
-		return $this->db->get_where('registered_team', array('id_lomba' => $id_lomba))->result_array();
-	}
-
-	public function hapusLombaById($id)
-	{
-		$this->db->delete('lomba', ['id' => $id]);
-	}
-
-	public function getallusers()
-	{
-		$this->db->select();
-        $this->db->from('registered_team');
-        $this->db->join('lomba', 'registered_team.id_lomba = lomba.id', 'left');
-
-		return $this->db->get()->result_array();
 	}
 }
