@@ -11,6 +11,7 @@
                                   <th scope="col">#</th>
                                   <th scope="col">Nama</th>
                                   <th scope="col">Email</th>
+                                  <th scope="col">Paket</th>
                                   <th scope="col">Action</th>
                                 </tr>
                               </thead>
@@ -21,6 +22,7 @@
                                   <th scope="row"><?=$i++;?></th>
                                   <td><?=$u['name'];?></td>
                                   <td><?=$u['email'];?></td>
+                                  <td><?=$u['paket'];?></td>
                                   <td>
                                       <a href="" class="badge badge-success">Lihat Workout</a>
                                       <a href="" class="badge badge-danger">Hapus</a>
