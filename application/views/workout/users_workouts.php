@@ -3,6 +3,7 @@
                 	<?= $this->session->flashdata('message'); ?>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
+                    <a href="<?= base_url('admin/getallmembers')?>" type="button" class="btn btn-primary mb-3">Kembali</a>
                     <table class="table table-hover">
 						  <thead>
 						    <tr>
@@ -15,17 +16,17 @@
 						    </tr>
 						  </thead>
 						  <?php $i=1; ?>
-						  <?php foreach($users_workouts as $u): ?>
+						  <?php foreach($member_workout as $mw): ?>
 						  <tbody>
 						    <tr>
 						      <th scope="row"><?= $i++;?></th>
-						      <td><?= $u['user_id']?></td>
-						      <td><?= $u['bb'];?></td>
-						      <td><?= $u['tb'];?></td>
-						      <td><?= date('d F Y', $u['tanggal'])?></td>
+						      <td><?= $mw['user_id']?></td>
+						      <td><?= $mw['bb'];?></td>
+						      <td><?= $mw['tb'];?></td>
+						      <td><?= date('d F Y', $mw['tanggal'])?></td>
 						      <td>
-						      <?php if($u['is_accepted'] == 0): ?>
-						      	<a class="badge badge-warning" href="<?= base_url('admin/setuserworkout/') ?><?= $u['user_id']?>">Menunggu Konfirmasi</a>
+						      <?php if($mw['is_accepted'] == 0): ?>
+						      	<a class="badge badge-warning" href="<?= base_url('admin/setuserworkout/') ?><?= $mw['user_id']?>">Menunggu Konfirmasi</a>
 						      	<?php else: ?>
 						      	<a class="badge badge-success" disabled >Berhasil Dikirim</a>
 						      <?php endif; ?>
