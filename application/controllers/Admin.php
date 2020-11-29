@@ -89,7 +89,7 @@ class Admin extends CI_Controller
 
 	public function getallmembers()
 	{
-		$data['title'] = 'Daftar User';
+		$data['title'] = 'Daftar Member';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->load->model('User_model','user');
@@ -102,26 +102,28 @@ class Admin extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function getusersworkouts()
-	{
-		$data['title'] = 'Users Workout Plan';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+	// public function getusersworkouts()
+	// {
+	// 	$data['title'] = 'Users Workout Plan';
+	// 	$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->model('Workouts_model','workouts');
-		$data['users_workouts'] = $this->workouts->getallworkouts();
+	// 	$this->load->model('Workouts_model','workouts');
+	// 	$data['users_workouts'] = $this->workouts->getallworkouts();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('workout/users_workouts', $data);
-		$this->load->view('templates/footer');
-	}
+	// 	$this->load->view('templates/header', $data);
+	// 	$this->load->view('templates/sidebar', $data);
+	// 	$this->load->view('templates/topbar', $data);
+	// 	$this->load->view('workout/users_workouts', $data);
+	// 	$this->load->view('templates/footer');
+	// }
 
 	public function setuserworkout($user_id)
 	{
 		$data['title'] = 'Users Workout Plan';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['user_id'] = $user_id;
+		$data['member_workout'] = $this->db->get_where('workouts', ['user_id' => $user_id])->result_array();
+		$data['member_detail'] = $this->db->get_where('user', ['id' => $user_id])->result_array();
 
 		$this->form_validation->set_rules('angkat_beban', 'Angkat Beban', 'required');
 		$this->form_validation->set_rules('lari', 'Lari', 'required');
@@ -130,7 +132,7 @@ class Admin extends CI_Controller
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
-			$this->load->view('workout/set_users_workouts', $data);
+			$this->load->view('workout/users_workouts', $data);
 			$this->load->view('templates/footer');
 		}else{
 			$data = [

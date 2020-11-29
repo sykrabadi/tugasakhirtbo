@@ -5,6 +5,6 @@ class Workouts_model extends CI_Model
 {
 	public function getallworkouts()
 	{
-		return $this->db->get('workouts')->result_array();
+		return $this->db->get_where('workouts')->result_array();
 	}
 }

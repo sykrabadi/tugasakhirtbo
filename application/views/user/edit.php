@@ -21,6 +21,18 @@
 								    </div>
 								</div>
 								<div class="form-group row">
+								    <label for="paket" class="col-sm-2 col-form-label">Paket</label>
+								    <div class="col-sm-10">
+								      <select id="paket" name="paket" class="form-control" value="<?php echo set_value('paket');?>">
+								      	<option value="Weight Gain">Weight Gain</option>
+								      	<option value="Weight Loss">Weight Loss</option>
+								      	<option value="Body Building">Body Building</option>
+								      	<option value="Kebugaran">Kebugaran</option>
+								      </select>
+								      <?= form_error('paket', '<small class="text-danger pl-3">', '</small>'); ?>
+								    </div>
+								</div>
+								<div class="form-group row">
 								    <div class="col-sm-2">Picture</div>
 								    <div class="col-sm-10">
 								    	<div class="row">
