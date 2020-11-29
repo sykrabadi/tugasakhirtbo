@@ -7,4 +7,5 @@ class Workouts_model extends CI_Model
 	{
 		return $this->db->get_where('workouts')->result_array();
 	}
+	
 }
