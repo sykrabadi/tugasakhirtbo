@@ -18,7 +18,7 @@
 					    <label for="formGroupExampleInput2">Lari</label>
 					    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Km" name="lari">
 					  </div>
-					  <a href="<?= base_url('admin/getuserworkoutbyid/') ;?><?=$member_detail['id']?>" type="button" class="btn btn-secondary">Kembali</a>
+					  <a href="<?= base_url('admin/getmemberbyid/') ;?><?= $member_detail['id']?>" type="button" class="btn btn-secondary">Kembali</a>
 					  <button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 

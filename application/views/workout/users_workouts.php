@@ -2,7 +2,8 @@
                 <div class="container-fluid">
                 	<?= $this->session->flashdata('message'); ?>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
+                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?><span> / <?= $member_detail['name'];?></span></h1>
+                    <h1 class="h3 mb-4 text-gray-800"></h1>
                     <a href="<?= base_url('admin/getallmembers')?>" type="button" class="btn btn-primary mb-3">Kembali</a>
                     <table class="table table-hover">
 						  <thead>
