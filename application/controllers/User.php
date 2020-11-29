@@ -35,9 +35,9 @@ class User extends CI_Controller
 			$this->load->view('user/edit', $data);
 			$this->load->view('templates/footer');
 		}else{
-			$name = $this->input->post('name');
+			$name  = $this->input->post('name');
 			$email = $this->input->post('email');
-
+			$paket = $this->input->post('paket');
 			$upload_image = $_FILES['image']['name'];
 
 			if($upload_image){
@@ -59,6 +59,7 @@ class User extends CI_Controller
 			}
 
 			$this->db->set('name', $name);
+			$this->db->set('paket', $paket);
 			$this->db->where('email', $email);
 			$this->db->update('user');
 

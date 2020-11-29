@@ -5,6 +5,6 @@ class User_model extends CI_Model
 {
 	public function getallmembers()
 	{
-		return $this->db->get('user')->result_array();
+		return $this->db->get_where('user', ['role_id' => 2])->result_array();
 	}
 }
