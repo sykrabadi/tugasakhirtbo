@@ -26,7 +26,7 @@
 						      <td><?= date('d F Y', $mw['tanggal'])?></td>
 						      <td>
 						      <?php if($mw['is_accepted'] == 0): ?>
-						      	<a class="badge badge-warning" href="<?= base_url('admin/setuserworkout/') ?><?= $mw['user_id']?>">Menunggu Konfirmasi</a>
+						      	<a class="badge badge-warning" href="<?= base_url('admin/setuserworkoutbyid/') ?><?= $mw['user_id']?>">Menunggu Konfirmasi</a>
 						      	<?php else: ?>
 						      	<a class="badge badge-success" disabled >Berhasil Dikirim</a>
 						      <?php endif; ?>

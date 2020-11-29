@@ -24,7 +24,7 @@
                                   <td><?=$u['email'];?></td>
                                   <td><?=$u['paket'];?></td>
                                   <td>
-                                      <a href="<?= base_url('admin/setuserworkout/')?><?= $u['id']?>" class="badge badge-success">Lihat Workout</a>
+                                      <a href="<?= base_url('admin/getuserworkoutbyid/')?><?= $u['id']?>" class="badge badge-success">Lihat Workout</a>
                                       <a href="" class="badge badge-danger">Hapus</a>
                                   </td>
                                 </tr>
