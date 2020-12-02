@@ -12,6 +12,7 @@
                                   <th scope="col">Nama</th>
                                   <th scope="col">Email</th>
                                   <th scope="col">Paket</th>
+                                  <th scope="col">Asesmen Awal</th>
                                   <th scope="col">Action</th>
                                 </tr>
                               </thead>
@@ -24,7 +25,14 @@
                                   <td><?=$u['email'];?></td>
                                   <td><?=$u['paket'];?></td>
                                   <td>
-                                      <a href="<?= base_url('admin/getuserworkoutbyid/')?><?= $u['id']?>" class="badge badge-success">Lihat Workout</a>
+                                    <?php if($u['is_assessed'] == 0):?>
+                                      <a href="<?= base_url('admin/setassessmentbyid/')?><?= $u['id']?>" class="badge badge-warning">Belum Menerima Asesmen Awal</a>
+                                    <?php else:?>
+                                      <a href="" class="badge badge-success">Sudah Melakukan Asesmen Awal</a>
+                                    <?php endif?>
+                                  </td>
+                                  <td>
+                                      <a href="<?= base_url('admin/getuserworkoutbyid/')?><?= $u['id']?>" class="badge badge-success">Riwayat Workout</a>
                                       <a href="" class="badge badge-danger">Hapus</a>
                                   </td>
                                 </tr>

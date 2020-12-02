@@ -4,6 +4,7 @@
 					<?= $this->session->flashdata('message'); ?>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
+                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
                     <!-- Button trigger modal -->
 						<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#planner">
 						  + Buat Workout Planner 
@@ -13,8 +14,6 @@
 						  <thead>
 						    <tr>
 						      <th scope="col">#</th>
-						      <th scope="col">Berat Badan Saat Terdaftar</th>
-						      <th scope="col">Tinggi Badan Saat Terdaftar</th>
 						      <th scope="col">Tanggal Terdaftar</th>
 						      <th scope="col">Aksi</th>
 						    </tr>
@@ -24,14 +23,14 @@
 						  <tbody>
 						    <tr>
 						      <th scope="row"><?= $i++;?></th>
-						      <td><?= $w['bb'];?></td>
-						      <td><?= $w['tb'];?></td>
 						      <td><?= date('d F Y', $w['tanggal'])?></td>
 						      <td>
 						      <?php if($w['is_accepted'] == 0): ?>
-						      	<a class="badge badge-info" disabled ?>Menunggu Konfirmasi</a>
-						      	<?php else: ?>
-						      	<a class="badge badge-success" href="" data-target="#detail" data-toggle="modal" ?>Lihat Detail</a>
+						      	<a class="badge badge-warning" disabled>Menunggu Konfirmasi</a>
+						      	<?php elseif($w['is_accepted'] == 1): ?>
+						      	<a class="badge badge-info" href="" data-target="#detail" data-toggle="modal">Lihat Detail</a>
+						      	<?php else:?>
+						      	<a class="badge badge-success" disabled>Workout Selesai</a>
 						      <?php endif; ?>
 						      </td>
 						    </tr>

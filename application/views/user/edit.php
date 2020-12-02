@@ -14,6 +14,26 @@
 								    </div>
 								</div>
 								<div class="form-group row">
+								    <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+								    <div class="col-sm-10">
+								    	<input type="date" class="form-control form-control-user" id="tanggal_lahir" name="tanggal_lahir" value="<?= $user['tanggal_lahir']?>" placeholder="<?= $user['tanggal_lahir']?>">
+								    </div>
+								</div>
+								<div class="form-group row">
+								    <label for="TB" class="col-sm-2 col-form-label">Tinggi Badan (Cm)</label>
+								    <div class="col-sm-10">
+								      <input type="number" class="form-control" id="TB" placeholder="Cm" name="tinggi_badan" value="<?= $user['tinggi_badan']?>">
+								      <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
+								    </div>
+								</div>
+								<div class="form-group row">
+								    <label for="BB" class="col-sm-2 col-form-label">Berat Badan (Kg)</label>
+								    <div class="col-sm-10">
+								      <input type="number" class="form-control" id="BB" placeholder="Kg" name="berat_badan" value="<?= $user['berat_badan']?>">
+								      <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
+								    </div>
+								</div>
+								<div class="form-group row">
 								    <label for="name" class="col-sm-2 col-form-label">Full Name</label>
 								    <div class="col-sm-10">
 								      <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<?= $user['name']?>">

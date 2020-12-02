@@ -7,16 +7,12 @@
                     <h2 class="h6 mb-4 text-gray-800">Paket Member : <?= $member_detail['paket']?></h2>
                     <form method="post" action="<?= base_url('admin/setuserworkout/') ?><?= $user_id?>">
                     <div class="form-group">
-					    <label for="formGroupExampleInput">ID User</label>
+					    <label for="formGroupExampleInput">ID Member</label>
 					    <input type="text" class="form-control" id="formGroupExampleInput" value="<?= $user_id;?>" name="user_id" readonly>
 					  </div>
 					  <div class="form-group">
-					    <label for="formGroupExampleInput">Angkat Beban</label>
-					    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Kg" name="angkat_beban">
-					  </div>
-					  <div class="form-group">
-					    <label for="formGroupExampleInput2">Lari</label>
-					    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Km" name="lari">
+					    <label for="formGroupExampleInput">Catatan</label>
+					    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Beri Catatan Kepada Member" name="catatan">
 					  </div>
 					  <a href="<?= base_url('admin/getuserworkoutbyid/') ;?><?= $member_detail['id']?>" type="button" class="btn btn-secondary">Kembali</a>
 					  <button type="submit" class="btn btn-primary">Submit</button>

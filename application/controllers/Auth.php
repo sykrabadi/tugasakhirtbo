@@ -86,7 +86,7 @@ class Auth extends CI_Controller
 			'min_length' => 'password too short!'
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-
+		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'WPU Registration';
 			$this->load->view('templates/auth_header', $data);
@@ -100,7 +100,8 @@ class Auth extends CI_Controller
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 1,
-				'date_created' => time()
+				'date_created' => time(),
+				'tanggal_lahir' => htmlspecialchars($this->input->post('tanggal_lahir', true))
 			];
 
 			$this->db->insert('user', $data);

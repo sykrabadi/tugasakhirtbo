@@ -35,9 +35,12 @@ class User extends CI_Controller
 			$this->load->view('user/edit', $data);
 			$this->load->view('templates/footer');
 		}else{
-			$name  = $this->input->post('name');
-			$email = $this->input->post('email');
-			$paket = $this->input->post('paket');
+			$name  = $this->input->post('name', true);
+			$email = $this->input->post('email', true);
+			$paket = $this->input->post('paket', true);
+			$tanggal_lahir = $this->input->post('tanggal_lahir', true);
+			$berat_badan = $this->input->post('berat_badan', true);
+			$tinggi_badan = $this->input->post('tinggi_badan', true);
 			$upload_image = $_FILES['image']['name'];
 
 			if($upload_image){
@@ -60,11 +63,27 @@ class User extends CI_Controller
 
 			$this->db->set('name', $name);
 			$this->db->set('paket', $paket);
+			$this->db->set('tinggi_badan', $tinggi_badan);
+			$this->db->set('berat_badan', $berat_badan);
+			$this->db->set('tanggal_lahir', $tanggal_lahir);
 			$this->db->where('email', $email);
 			$this->db->update('user');
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Profil Berhasil Diubah! </div>');
 			redirect('user');
 		}
+	}
+
+	public function getassessmentdetail()
+	{
+		$data['title'] = 'Detail Asesmen Awal';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		//panggil file index dalam folder user, dalam folder view
+		$this->load->view('user/assessment_detail', $data);
+		$this->load->view('templates/footer');
 	}
 }

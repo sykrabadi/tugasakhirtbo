@@ -119,7 +119,7 @@ class Admin extends CI_Controller
 
 	public function getuserworkoutbyid($user_id)
 	{
-		$data['title'] = 'Users Workout Plan';
+		$data['title'] = 'Riwayat Workout';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['user_id'] = $user_id;
 		$data['member_workout'] = $this->db->get_where('workouts', ['user_id' => $user_id])->result_array();
@@ -162,6 +162,39 @@ class Admin extends CI_Controller
 	      $this->db->update('workouts');
 	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
 	      redirect('admin/getuserworkout');
+		}
+	}
+
+	{
+		$data['title'] = 'Asesmen Awal User';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user_id'] = $this->uri->segment(3);
+		$data['member_detail'] = $this->db->get_where('user', ['id' => $user_id])->row_array();
+
+		$this->form_validation->set_rules('bmi', 'BMI', 'required');
+		$this->form_validation->set_rules('lemak_tubuh', 'Lemak Tubuh', 'required');
+		$this->form_validation->set_rules('detak_jantung', 'Detak Jantung', 'required');
+
+		if($this->form_validation->run() == false){
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('workout/set_users_assessment', $data);
+			$this->load->view('templates/footer');
+		}else{
+		        $bmi 	   		= $this->input->post('bmi', true);
+		        $lemak_tubuh   = $this->input->post('lemak_tubuh', true);
+		        $detak_jantung = $this->input->post('detak_jantung', true);
+		        $is_assessed	= 1;
+	      //update kondisi is_accepted menjadi accepted (1) pada tabel workouts
+		  $this->db->set('bmi', $bmi);
+		  $this->db->set('lemak_tubuh', $lemak_tubuh);
+		  $this->db->set('detak_jantung', $detak_jantung);
+	      $this->db->set('is_assessed', $is_assessed);
+	      $this->db->where('id', $user_id);
+	      $this->db->update('user');
+	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
+	      redirect('admin/getallmembers');
 		}
 	}
 }

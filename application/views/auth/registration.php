@@ -31,6 +31,12 @@
                                     <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <!-- set_values() untuk menyimpan data sebelumnya -->
+                                <label for="tanggal_lahir" style="text-align: center;">Tanggal Lahir</label>
+                                <input type="date" class="form-control form-control-user" id="tanggal_lahir" name="tanggal_lahir">
+                                <?= form_error('tanggal_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Register Account
                             </button>
