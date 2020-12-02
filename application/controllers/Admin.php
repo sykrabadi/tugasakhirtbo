@@ -165,6 +165,7 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function setassessmentbyid($user_id)
 	{
 		$data['title'] = 'Asesmen Awal User';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
