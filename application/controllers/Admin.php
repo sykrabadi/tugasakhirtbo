@@ -104,7 +104,7 @@ class Admin extends CI_Controller
 
 	public function getusersworkouts()
 	{
-		$data['title'] = 'Users Workout Plan';
+		$data['title'] = 'User Workouts';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->load->model('Workouts_model', 'workouts');
@@ -117,18 +117,18 @@ class Admin extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function getuserworkoutbyid($user_id)
+	public function getuserworkoutbyid()
 	{
 		$data['title'] = 'Riwayat Workout';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['user_id'] = $user_id;
-		$data['member_workout'] = $this->db->get_where('workouts', ['user_id' => $user_id])->result_array();
-		$data['member_detail'] = $this->db->get_where('user', ['id' => $user_id])->row_array();
+		$data['member_data'] = $this->db->get_where('user', ['id' => $this->uri->segment(3)])->row_array();
+		$data['member_history'] = $this->db->get_where('workouts', ['user_id' => $this->uri->segment(3)])->result_array();
+		//$data['member_history'] = $this->db->get_where('workouts' ['user_id' => $this->uri->segment(3)])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
-		$this->load->view('workout/users_workouts', $data);
+		$this->load->view('workout/users_workouts_byid', $data);
 		$this->load->view('templates/footer');
 	}
 
