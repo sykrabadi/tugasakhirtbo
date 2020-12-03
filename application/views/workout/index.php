@@ -8,7 +8,7 @@
 						<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#planner">
 						  + Buat Workout Planner 
 						</button>
-
+						<h1 class="h4 mb-4 text-gray-800">Riwayat Workout</h1>
 						<table class="table table-hover">
 						  <thead>
 						    <tr>
@@ -25,7 +25,7 @@
 						      <th scope="row"><?= $i++;?></th>
 						      <td><?= date('d F Y', $w['tanggal'])?></td>
 						      <td>
-						      	<a class="badge badge-info" href="<?= base_url('user/getworkoutdetail')?>" >Lihat Detail</a>
+						      	<a class="badge badge-info" href="<?= base_url('user/getworkoutdetail/')?><?= $w['id']?>" >Lihat Detail</a>
 						      </td>
 						      <td>
 						      	<?php if($w['is_accepted'] == 0):?>

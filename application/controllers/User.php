@@ -91,7 +91,7 @@ class User extends CI_Controller
 	{
 		$data['title'] = 'Detail Workout';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['workout_detail'] = $this->db->get_where('workouts', ['user_id' => $this->session->userdata('id')])->row_array();
+		$data['workout_detail'] = $this->db->get_where('workouts', ['id' => $this->uri->segment(3)])->row();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);

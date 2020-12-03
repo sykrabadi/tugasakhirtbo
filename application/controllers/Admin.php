@@ -171,6 +171,7 @@ class Admin extends CI_Controller
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['user_id'] = $this->uri->segment(3);
 		$data['member_detail'] = $this->db->get_where('user', ['id' => $user_id])->row_array();
+		$data['workout_id'] = $this->db->get('workouts')->row();
 
 		$this->form_validation->set_rules('bmi', 'BMI', 'required');
 		$this->form_validation->set_rules('lemak_tubuh', 'Lemak Tubuh', 'required');
@@ -197,5 +198,28 @@ class Admin extends CI_Controller
 	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
 	      redirect('admin/getallmembers');
 		}
+	}
+
+	public function getuserworkoutdetail()
+	{
+		$data['title'] = 'Detail Workout';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();		
+		$data['member_detail'] = $this->db->get_where('workouts', ['no' => $this->uri->segment(3)])->row_array();
+
+		if($this->form_validation->run() == false){
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			//panggil file index dalam folder user, dalam folder view
+			$this->load->view('workout/user_workout_detail_for_admin', $data);
+			$this->load->view('templates/footer');
+		}else{
+			$is_accepted = 1;
+			$this->db->set('is_accepted', $is_accepted);
+			$this->db->where('no', $this->uri->segment(3));
+			$this->db->update('workouts');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil Dikonfirmasi! </div>');
+	      	redirect('admin/getusersworkouts/'.$this->uri->segment(3));
+		}	
 	}
 }

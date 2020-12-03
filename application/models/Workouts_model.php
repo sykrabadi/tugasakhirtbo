@@ -10,5 +10,4 @@ class Workouts_model extends CI_Model
 		$this->db->join('user', 'workouts.user_id = user.id');
 		return $this->db->get();
 	}
-	
 }

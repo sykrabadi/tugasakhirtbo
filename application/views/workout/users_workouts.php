@@ -4,7 +4,6 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
                     <h1 class="h3 mb-4 text-gray-800"></h1>
-                    <a href="<?= base_url('admin/getallmembers')?>" type="button" class="btn btn-primary mb-3">Kembali</a>
                     <table class="table table-hover">
 						  <thead>
 						    <tr>
@@ -12,7 +11,7 @@
 						      <th scope="col">Nama Member</th>
 						      <th scope="col">Paket</th>
 						      <th scope="col">Jadwal Workout</th>
-						      <th scope="col">Aksi</th>
+						      <th scope="col">Keterangan</th>
 						    </tr>
 						  </thead>
 						  <?php $i=1; ?>
@@ -25,7 +24,7 @@
 						      <td><?= date('d F Y', $uw['tanggal'])?></td>
 						      <td>
 						      	<?php if($uw['is_accepted'] == 0):?>
-						      		<a href="" class="badge badge-primary">Menunggu Konfirmasi</a>
+						      		<a href="<?= base_url('admin/getuserworkoutdetail/')?><?= $uw['no']?>" class="badge badge-primary">Menunggu Konfirmasi</a>
 						      	<?php else:?>
 						      		<a href="" class="badge badge-success">Rekap Berhasil Dikirim</a>
 						      	<?php endif;?>
