@@ -86,4 +86,18 @@ class User extends CI_Controller
 		$this->load->view('user/assessment_detail', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function getworkoutdetail()
+	{
+		$data['title'] = 'Detail Workout';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['workout_detail'] = $this->db->get_where('workouts', ['user_id' => $this->session->userdata('id')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		//panggil file index dalam folder user, dalam folder view
+		$this->load->view('workout/user_workout_detail', $data);
+		$this->load->view('templates/footer');
+	}
 }

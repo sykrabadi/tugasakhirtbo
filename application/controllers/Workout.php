@@ -15,7 +15,7 @@ class Workout extends CI_Controller
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
     $data['workout_data'] = $this->db->get_where('workouts', ['user_id' => $this->session->userdata('id')])->result_array();
 
-    $this->form_validation->set_rules('bb', 'Berat Badan', 'required');
+    $this->form_validation->set_rules('catatan', 'Catatan', 'required');
 
     if($this->form_validation->run() == false){
       $this->load->view('templates/header', $data);
@@ -26,8 +26,7 @@ class Workout extends CI_Controller
     }else{
       $data = [
         'user_id' => $this->session->userdata('id'),
-        'bb'      => $this->input->post('bb'),
-        'tb'      => $this->input->post('tb'),
+        'catatan' => $this->input->post('catatan', true),
         'tanggal' => time(),
         'is_accepted' => 0
       ];

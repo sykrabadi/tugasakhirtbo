@@ -102,20 +102,20 @@ class Admin extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	// public function getusersworkouts()
-	// {
-	// 	$data['title'] = 'Users Workout Plan';
-	// 	$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+	public function getusersworkouts()
+	{
+		$data['title'] = 'Users Workout Plan';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-	// 	$this->load->model('Workouts_model','workouts');
-	// 	$data['users_workouts'] = $this->workouts->getallworkouts();
+		$this->load->model('Workouts_model','workouts');
+		$data['users_workouts'] = $this->workouts->getallworkouts()->result_array();
 
-	// 	$this->load->view('templates/header', $data);
-	// 	$this->load->view('templates/sidebar', $data);
-	// 	$this->load->view('templates/topbar', $data);
-	// 	$this->load->view('workout/users_workouts', $data);
-	// 	$this->load->view('templates/footer');
-	// }
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('workout/users_workouts', $data);
+		$this->load->view('templates/footer');
+	}
 
 	public function getuserworkoutbyid($user_id)
 	{

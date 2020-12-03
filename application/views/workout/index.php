@@ -4,7 +4,6 @@
 					<?= $this->session->flashdata('message'); ?>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
-                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
                     <!-- Button trigger modal -->
 						<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#planner">
 						  + Buat Workout Planner 
@@ -15,7 +14,8 @@
 						    <tr>
 						      <th scope="col">#</th>
 						      <th scope="col">Tanggal Terdaftar</th>
-						      <th scope="col">Aksi</th>
+						      <th scope="col">Detail</th>
+						      <th scope="col">Status</th>
 						    </tr>
 						  </thead>
 						  <?php $i=1; ?>
@@ -25,14 +25,17 @@
 						      <th scope="row"><?= $i++;?></th>
 						      <td><?= date('d F Y', $w['tanggal'])?></td>
 						      <td>
-						      <?php if($w['is_accepted'] == 0): ?>
-						      	<a class="badge badge-warning" disabled>Menunggu Konfirmasi</a>
-						      	<?php elseif($w['is_accepted'] == 1): ?>
-						      	<a class="badge badge-info" href="" data-target="#detail" data-toggle="modal">Lihat Detail</a>
-						      	<?php else:?>
-						      	<a class="badge badge-success" disabled>Workout Selesai</a>
-						      <?php endif; ?>
+						      	<a class="badge badge-info" href="<?= base_url('user/getworkoutdetail')?>" >Lihat Detail</a>
 						      </td>
+						      <td>
+						      	<?php if($w['is_accepted'] == 0):?>
+						      	<span class="badge badge-warning" disabled>Menunggu Konfirmasi</span>
+						      	<?php elseif($w['is_accepted'] == 1):?>
+						      	<span class="badge badge-primary" disabled>Workout Disetujui</span>
+						      	<?php elseif($w['is_accepted'] == 2):?>
+						      	<span class="badge badge-success" disabled>Workout Selesai</span>
+						      </td>
+						  		<?php endif; ?>
 						    </tr>
 						  <?php endforeach;?>
 						  </tbody>
@@ -57,15 +60,10 @@
 				      <div class="modal-body">
 				        <form method="post" action="<?= base_url('workout'); ?>">
 				        	<input type="hidden" value="<?= $this->session->userdata('id'); ?>" readonly>
+						  
 						  <div class="form-group">
-						    <label for="formGroupExampleInput">Berat Badan Saat Ini</label>
-						    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Berat Badan" name="bb">
-						  </div>
-						  <input type="hidden" value="">
-
-						  <div class="form-group">
-						    <label for="formGroupExampleInput">Tinggi Badan Saat Ini</label>
-						    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Tinggi Badan" name="tb">
+						    <label for="formGroupExampleInput">Catatan</label>
+						    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Tambahkan Rencana Kegiatan Workout" name="catatan">
 						  </div>
 
 				      </div>
