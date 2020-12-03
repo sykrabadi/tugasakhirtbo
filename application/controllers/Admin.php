@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
@@ -8,7 +8,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		is_logged_in();
 	}
-	
+
 	public function index()
 	{
 		$data['title'] = 'Ini Gym - Admin';
@@ -36,7 +36,7 @@ class Admin extends CI_Controller
 		$this->load->view('admin/role', $data);
 		$this->load->view('templates/footer');
 	}
-	
+
 	public function roleAccess($role_id)
 	{
 
@@ -66,9 +66,9 @@ class Admin extends CI_Controller
 
 		$result = $this->db->get_where('user_access_menu', $data);
 
-		if($result->num_rows() < 1){
+		if ($result->num_rows() < 1) {
 			$this->db->insert('user_access_menu', $data);
-		}else{
+		} else {
 			$this->db->delete('user_access_menu', $data);
 		}
 
@@ -92,7 +92,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'Daftar Member';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->model('User_model','user');
+		$this->load->model('User_model', 'user');
 		$data['users'] = $this->user->getallmembers();
 
 		$this->load->view('templates/header', $data);
@@ -107,7 +107,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'Users Workout Plan';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->model('Workouts_model','workouts');
+		$this->load->model('Workouts_model', 'workouts');
 		$data['users_workouts'] = $this->workouts->getallworkouts()->result_array();
 
 		$this->load->view('templates/header', $data);
@@ -142,26 +142,26 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('angkat_beban', 'Angkat Beban', 'required');
 		$this->form_validation->set_rules('lari', 'Lari', 'required');
 
-		if($this->form_validation->run() == false){
+		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
 			$this->load->view('workout/set_users_workouts', $data);
 			$this->load->view('templates/footer');
-		}else{
+		} else {
 			$data = [
-		        'user_id' 	   => $user_id,
-		        'angkat_beban' => $this->input->post('angkat_beban'),
-		        'lari'		   => $this->input->post('lari')
-	      	];
-	      $this->db->insert('workouts_admin', $data);
+				'user_id' 	   => $user_id,
+				'angkat_beban' => $this->input->post('angkat_beban'),
+				'lari'		   => $this->input->post('lari')
+			];
+			$this->db->insert('workouts_admin', $data);
 
-	      //update kondisi is_accepted menjadi accepted (1) pada tabel workouts
-	      $this->db->set('is_accepted', 1);
-	      $this->db->where('user_id', $user_id);
-	      $this->db->update('workouts');
-	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
-	      redirect('admin/getuserworkout');
+			//update kondisi is_accepted menjadi accepted (1) pada tabel workouts
+			$this->db->set('is_accepted', 1);
+			$this->db->where('user_id', $user_id);
+			$this->db->update('workouts');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
+			redirect('admin/getuserworkout');
 		}
 	}
 
@@ -177,49 +177,49 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('lemak_tubuh', 'Lemak Tubuh', 'required');
 		$this->form_validation->set_rules('detak_jantung', 'Detak Jantung', 'required');
 
-		if($this->form_validation->run() == false){
+		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
 			$this->load->view('workout/set_users_assessment', $data);
 			$this->load->view('templates/footer');
-		}else{
-		        $bmi 	   		= $this->input->post('bmi', true);
-		        $lemak_tubuh   = $this->input->post('lemak_tubuh', true);
-		        $detak_jantung = $this->input->post('detak_jantung', true);
-		        $is_assessed	= 1;
-	      //update kondisi is_accepted menjadi accepted (1) pada tabel workouts
-		  $this->db->set('bmi', $bmi);
-		  $this->db->set('lemak_tubuh', $lemak_tubuh);
-		  $this->db->set('detak_jantung', $detak_jantung);
-	      $this->db->set('is_assessed', $is_assessed);
-	      $this->db->where('id', $user_id);
-	      $this->db->update('user');
-	      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
-	      redirect('admin/getallmembers');
+		} else {
+			$bmi 	   		= $this->input->post('bmi', true);
+			$lemak_tubuh   = $this->input->post('lemak_tubuh', true);
+			$detak_jantung = $this->input->post('detak_jantung', true);
+			$is_assessed	= 1;
+			//update kondisi is_accepted menjadi accepted (1) pada tabel workouts
+			$this->db->set('bmi', $bmi);
+			$this->db->set('lemak_tubuh', $lemak_tubuh);
+			$this->db->set('detak_jantung', $detak_jantung);
+			$this->db->set('is_assessed', $is_assessed);
+			$this->db->where('id', $user_id);
+			$this->db->update('user');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Workout Plan Berhasil Ditambahkan! </div>');
+			redirect('admin/getallmembers');
 		}
 	}
 
 	public function getuserworkoutdetail()
 	{
 		$data['title'] = 'Detail Workout';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();		
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['member_detail'] = $this->db->get_where('workouts', ['no' => $this->uri->segment(3)])->row_array();
 
-		if($this->form_validation->run() == false){
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
-			//panggil file index dalam folder user, dalam folder view
-			$this->load->view('workout/user_workout_detail_for_admin', $data);
-			$this->load->view('templates/footer');
-		}else{
-			$is_accepted = 1;
-			$this->db->set('is_accepted', $is_accepted);
-			$this->db->where('no', $this->uri->segment(3));
-			$this->db->update('workouts');
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil Dikonfirmasi! </div>');
-	      	redirect('admin/getusersworkouts/'.$this->uri->segment(3));
-		}	
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		//panggil file index dalam folder user, dalam folder view
+		$this->load->view('workout/user_workout_detail_for_admin', $data);
+		$this->load->view('templates/footer');
+	}
+	public function terima()
+	{
+		$is_accepted = 1;
+		$this->db->set('is_accepted', $is_accepted);
+		$this->db->where('no', $this->uri->segment(3));
+		$this->db->update('workouts');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil Dikonfirmasi! </div>');
+		redirect('admin/getusersworkouts/' . $this->uri->segment(3));
 	}
 }
