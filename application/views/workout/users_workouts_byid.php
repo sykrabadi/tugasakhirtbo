@@ -2,7 +2,9 @@
                 <div class="container-fluid">
                 	<?= $this->session->flashdata('message'); ?>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
+                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?>
+                    	<span>/ <?= $subtitle;?></span>
+                    </h1>
                     <h4 class="h4 mb-4 text-gray-800">ID Member : <?= $member_data['id']?></h4>
                     <h4 class="h4 mb-4 text-gray-800">Nama Member : <?= $member_data['name']?></h4>
                     <h4 class="h4 mb-4 text-gray-800">Paket : <?= $member_data['paket']?></h4>

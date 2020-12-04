@@ -1,14 +1,14 @@
 
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                  <div class="sidebar-brand-icon">
             <img src="<?= base_url('assets/img/um.png') ?>" style="width: 45px;" alt="">
         </div>
-                <div class="sidebar-brand-text mx-3">INI GYM UM</div>
+                <div class="sidebar-brand-text mx-3">Workout planner GYM UM</div>
             </a>
 
             <!-- Divider -->

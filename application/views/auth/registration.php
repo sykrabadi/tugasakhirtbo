@@ -37,7 +37,7 @@
                                 <input type="date" class="form-control form-control-user" id="tanggal_lahir" name="tanggal_lahir">
                                 <?= form_error('tanggal_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" class="btn btn-info btn-user btn-block">
                                 Register Account
                             </button>
                         </form>

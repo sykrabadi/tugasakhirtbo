@@ -75,18 +75,6 @@ class Admin extends CI_Controller
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Access Changed! </div>');
 	}
 
-	public function getAllPesertaById($id)
-	{
-		$data['title'] = 'Daftar Peserta';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['users'] = $this->db->get_where('registered_team', ['id_lomba' => $id])->result_array();
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('admin/daftarpeserta', $data);
-		$this->load->view('templates/footer');
-	}
-
 	public function getallmembers()
 	{
 		$data['title'] = 'Daftar Member';
@@ -105,6 +93,7 @@ class Admin extends CI_Controller
 	public function getusersworkouts()
 	{
 		$data['title'] = 'User Workouts';
+		$data['subtitle'] = 'Detail Workout';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->load->model('Workouts_model', 'workouts');
@@ -119,7 +108,8 @@ class Admin extends CI_Controller
 
 	public function getuserworkoutbyid()
 	{
-		$data['title'] = 'Riwayat Workout';
+		$data['title'] = 'Daftar Member';
+		$data['subtitle'] = 'Riwayat Workout';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['member_data'] = $this->db->get_where('user', ['id' => $this->uri->segment(3)])->row_array();
 		$data['member_history'] = $this->db->get_where('workouts', ['user_id' => $this->uri->segment(3)])->result_array();
@@ -167,7 +157,8 @@ class Admin extends CI_Controller
 
 	public function setassessmentbyid($user_id)
 	{
-		$data['title'] = 'Asesmen Awal User';
+		$data['title'] = 'Daftar Member';
+		$data['subtitle'] = 'Asesmen Awal User';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['user_id'] = $this->uri->segment(3);
 		$data['member_detail'] = $this->db->get_where('user', ['id' => $user_id])->row_array();
@@ -202,7 +193,8 @@ class Admin extends CI_Controller
 
 	public function getuserworkoutdetail()
 	{
-		$data['title'] = 'Detail Workout';
+		$data['title'] = 'User Workouts';
+		$data['subtitle'] = 'Detail Workout';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['member_detail'] = $this->db->get_where('workouts', ['no' => $this->uri->segment(3)])->row_array();
 

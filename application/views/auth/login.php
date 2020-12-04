@@ -1,5 +1,4 @@
 <div class="container">
-
     <!-- Outer Row -->
     <div class="row justify-content-center">
         <div class="col-lg-7">
@@ -22,7 +21,7 @@
                                         <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                                         <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-info btn-user btn-block">
                                         Login
                                     </button>
                                 </form>
@@ -34,6 +33,11 @@
                                     <a class="small" href="<?= base_url(); ?>/auth/registration">Belum punya akun? Daftar!</a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row justify=content-center p-3">
+                        <div class="col d-flex justify-content-center">
+                            <img src="<?= base_url('assets/img/um.png') ?>" class="img-fluid p-4 " style="width: 170px;">
                         </div>
                     </div>
                 </div>

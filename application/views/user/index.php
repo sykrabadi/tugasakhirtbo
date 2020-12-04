@@ -19,10 +19,12 @@
                             <p class="card-text"><?= $user['email']?></p>
                             <p class="card-text"><small class="text-muted">Member Since <?= date('d F Y', $user['date_created'])?></small></p>
                             <p class="card-text"><?= $user['paket']?></p>
-                            <?php if($user['is_assessed']==0):?>
+                            <?php if($user['role_id'] == 2):?>
+                            <?php if($user['is_assessed'] == 0):?>
                             <a class="badge badge-info" disabled>Asesmen Awal Belum Tersedia</a>
                             <?php else:?>
                             <a class="badge badge-success" href="<?= base_url('user/getassessmentdetail')?>">Lihat Assessmen Awal</a>
+                            <?php endif;?>
                             <?php endif;?>
                           </div>
                         </div>
