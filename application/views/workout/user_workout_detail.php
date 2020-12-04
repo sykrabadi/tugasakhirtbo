@@ -2,7 +2,9 @@
                 <div class="container-fluid">
                 	<?= $this->session->flashdata('message'); ?>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
+                    <h1 class="h3 mb-4 text-gray-800"><?= $title;?>
+                        <span> / <?= $subtitle;?></span>
+                    </h1>
                     <h1 class="h3 mb-4 text-gray-800"></h1>
                     <a href="<?= base_url('workout')?>" type="button" class="btn btn-primary mb-3">Kembali</a>
                     <div>

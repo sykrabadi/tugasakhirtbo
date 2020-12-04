@@ -2,7 +2,7 @@
   <footer class="sticky-footer bg-white">
       <div class="container my-auto">
           <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Pokcil PBO <?= date('Y') ?></span>
+              <span>Copyright &copy; Tugas Akhir Teori Bahasa Dan Automata Kelompok 8 Tahun <?= date('Y') ?></span>
           </div>
       </div>
   </footer>
@@ -72,7 +72,6 @@
           });
       });
   </script>
-  //lempar data id_lomba ke modal
   <script type="text/javascript">
       $(document).on("click", ".daftar-lomba", function() {
           var id = $(this).data('id');

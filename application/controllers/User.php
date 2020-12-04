@@ -89,9 +89,10 @@ class User extends CI_Controller
 
 	public function getworkoutdetail()
 	{
-		$data['title'] = 'Detail Workout';
+		$data['title'] = 'Workout';
+		$data['subtitle'] = 'Detail Workout';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['workout_detail'] = $this->db->get_where('workouts', ['id' => $this->uri->segment(3)])->row();
+		$data['workout_detail'] = $this->db->get_where('workouts', ['no' => $this->uri->segment(3)])->row();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);

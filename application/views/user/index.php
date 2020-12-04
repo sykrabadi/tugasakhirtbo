@@ -18,7 +18,11 @@
                             <h5 class="card-title"><?= $user['name']?></h5>
                             <p class="card-text"><?= $user['email']?></p>
                             <p class="card-text"><small class="text-muted">Member Since <?= date('d F Y', $user['date_created'])?></small></p>
+                            <?php if ($user['role_id'] == 1):?>
+                            <p class="card-text">Personal Trainer</p>
+                            <?php else:?>
                             <p class="card-text"><?= $user['paket']?></p>
+                            <?php endif;?>
                             <?php if($user['role_id'] == 2):?>
                             <?php if($user['is_assessed'] == 0):?>
                             <a class="badge badge-info" disabled>Asesmen Awal Belum Tersedia</a>

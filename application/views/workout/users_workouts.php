@@ -27,7 +27,7 @@
 						      	<?php if($uw['is_accepted'] == 0):?>
 						      		<a href="<?= base_url('admin/getuserworkoutdetail/')?><?= $uw['no']?>" class="badge badge-primary">Menunggu Konfirmasi</a>
 						      	<?php else:?>
-						      		<a href="" class="badge badge-success">Rekap Berhasil Dikirim</a>
+						      		<span href="" class="badge badge-success">Rekap Berhasil Dikirim</span>
 						      	<?php endif;?>
 						      </td>
 						    </tr>

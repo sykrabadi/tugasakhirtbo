@@ -25,7 +25,7 @@
 						      <th scope="row"><?= $i++;?></th>
 						      <td><?= date('d F Y', $w['tanggal'])?></td>
 						      <td>
-						      	<a class="badge badge-info" href="<?= base_url('user/getworkoutdetail/')?><?= $w['id']?>" >Lihat Detail</a>
+						      	<a class="badge badge-info" href="<?= base_url('user/getworkoutdetail/')?><?= $w['no']?>" >Lihat Detail</a>
 						      </td>
 						      <td>
 						      	<?php if($w['is_accepted'] == 0):?>
