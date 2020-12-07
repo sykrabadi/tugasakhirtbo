@@ -122,6 +122,13 @@ class Admin extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function hapus_data($id)
+	{
+		$this->load->model('m_user');
+		$this->m_user->hapus_data($id);
+		redirect('admin/getallmembers');
+	}
+
 	public function setuserworkoutbyid($user_id)
 	{
 		$data['title'] = 'Users Workout Plan';
