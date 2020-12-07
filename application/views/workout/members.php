@@ -33,7 +33,7 @@
                                   </td>
                                   <td>
                                       <a href="<?= base_url('admin/getuserworkoutbyid/')?><?= $u['id']?>" class="badge badge-success">Riwayat Workout</a>
-                                      <a href=""<?= base_url('admin/hapus_data/') ?><?= $u['id'] ?>" class="badge badge-danger">Hapus</a>
+                                      <a href="<?= base_url('admin/hapus_data/') ?><?= $u['id'] ?>" class="badge badge-danger">Hapus</a>
                                   </td>
                                 </tr>
                                 <?php endforeach;?>
